@@ -1,0 +1,33 @@
+Run ID: 20261023T211056Z
+Manifest written before experiments: /home/ec2-user/zero-day-generalization/reports/reproducible_runs/20261023T211056Z/pre_run_manifest.json
+Dataset SHA-256:
+{
+  "training": "0ebd9eb06d53ae223fbe7948737985e851e00e9c20140508d653de4b1655fdd6",
+  "testing": "7ec02e7e44d72bd265716b33fda0c7f2188b658e3a4ae1aa2c4b306134cd818c"
+}
+
+=== Starting generic_seed_7 ===
+SUCCESS: generic_seed_7
+
+=== Starting generic_seed_21 ===
+SUCCESS: generic_seed_21
+
+=== Starting generic_seed_42 ===
+SUCCESS: generic_seed_42
+
+=== Starting exploits_seed_7 ===
+SUCCESS: exploits_seed_7
+
+=== Starting exploits_seed_21 ===
+SUCCESS: exploits_seed_21
+
+=== Starting exploits_seed_42 ===
+SUCCESS: exploits_seed_42
+
+=== RUN SUMMARY ===
+{
+  "run_id": "20261023T211056Z",
+  "successful_runs": 6,
+  "failed_runs": 0,
+  "summary_file": "reports/reproducible_runs/20261023T211056Z/run_summary.json"
+}

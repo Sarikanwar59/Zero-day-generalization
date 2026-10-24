@@ -1,0 +1,13 @@
+{
+  "sources": {
+    "Generic": "reports/generic_target_fpr/20261024T061205Z/target_fpr_results.csv",
+    "Exploits": "reports/exploits_target_fpr/20261024T061555Z/target_fpr_results.csv"
+  },
+  "method": "Mean and t-based interval across calibration replicates",
+  "caveats": [
+    "Calibration samples may overlap and are not independent.",
+    "Evaluation cohorts are fixed within each source experiment.",
+    "Intervals describe calibration-replicate variation, not population-level generalization.",
+    "Results are exploratory and specific to the current UNSW-NB15 experiments."
+  ]
+}

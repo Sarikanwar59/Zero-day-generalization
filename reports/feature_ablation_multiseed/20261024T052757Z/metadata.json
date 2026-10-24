@@ -1,0 +1,25 @@
+{
+  "experiment": "multi_seed_training_side_feature_ablation",
+  "run_id": "20261024T052757Z",
+  "dataset": "data/raw/unsw_nb15/UNSW_NB15_training-set.csv",
+  "testing_csv_loaded": false,
+  "seeds": [
+    7,
+    21,
+    42
+  ],
+  "sample_size_per_seed_and_category": 20000,
+  "partition": "70% fit / 15% calibration / 15% validation",
+  "target_calibration_fpr": 0.05,
+  "random_forest_random_state": 42,
+  "scikit_learn_version": "1.6.1",
+  "runs": 24,
+  "notes": [
+    "Seed changes sample, split, and validation rows.",
+    "Random Forest internal random_state remains 42 for controlled comparisons.",
+    "Feature groups were selected from a previous seed-42 importance run.",
+    "This is training-side known-category validation, not held-out attack recall.",
+    "Standard deviations are sample standard deviations across three seeds.",
+    "No testing CSV was loaded."
+  ]
+}

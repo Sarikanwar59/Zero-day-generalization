@@ -1,0 +1,54 @@
+{
+  "experiment": "unseen_attack_category",
+  "held_out_category": "Generic",
+  "training_rows": 20000,
+  "test_rows": 10000,
+  "test_normal_rows": 5000,
+  "test_held_out_attack_rows": 5000,
+  "held_out_category_in_training": false,
+  "accuracy": 0.7029,
+  "precision": 0.6286620164870006,
+  "recall": 0.9914,
+  "f1_score": 0.7694218083042297,
+  "roc_auc": 0.9293968800000001,
+  "confusion_matrix": [
+    [
+      2072,
+      2928
+    ],
+    [
+      43,
+      4957
+    ]
+  ],
+  "provenance": {
+    "run": {
+      "run_id": "20261023T211056Z",
+      "experiment": "generic_seed_42",
+      "held_out_category": "Generic",
+      "seed": 42,
+      "started_at_utc": "2026-10-23T21:11:02.697350+00:00",
+      "finished_at_utc": "2026-10-23T21:11:05.701675+00:00",
+      "exit_code": 0,
+      "generated_script_sha256": "6bf6ecf552965b3ef7458f2e9de38d8b9f18e61ad1e4a49e0f88a5eca84cf175",
+      "log_path": "reports/reproducible_runs/20261023T211056Z/generic_seed_42.log",
+      "model_path": "models/reproducible_runs/20261023T211056Z/generic_seed_42.joblib",
+      "metrics_path": "reports/reproducible_runs/20261023T211056Z/generic_seed_42.json",
+      "pre_run_manifest_path": "reports/reproducible_runs/20261023T211056Z/pre_run_manifest.json"
+    },
+    "pre_run_manifest": "reports/reproducible_runs/20261023T211056Z/pre_run_manifest.json",
+    "dataset_sha256": {
+      "training": "0ebd9eb06d53ae223fbe7948737985e851e00e9c20140508d653de4b1655fdd6",
+      "testing": "7ec02e7e44d72bd265716b33fda0c7f2188b658e3a4ae1aa2c4b306134cd818c"
+    },
+    "evaluation_script_sha256": {
+      "Generic": "b55c5e81953f9e63e0831adbd649cdc37c747cd3c2739eeeb5d3c12bf39110bd",
+      "Exploits": "d179cad09553e73a8dd16650465ed195ec451c5b6b0bd83dd1b601ba0e291f5f"
+    },
+    "runner_sha256": "c6e640d5ede365f2a9c81f948b99db788958a26f3bf41b2c420437baba06ce2f",
+    "config_sha256": "c3b24ca00be2dd6e325cea4042097628da09b9764b584db820bdb70825858c4f",
+    "generated_script_sha256": "6bf6ecf552965b3ef7458f2e9de38d8b9f18e61ad1e4a49e0f88a5eca84cf175",
+    "note": "Dataset and source hashes were captured before experiments. This documents file identity, not official dataset authenticity or real-world zero-day detection validity."
+  },
+  "reproducible_run_id": "20261023T211056Z"
+}

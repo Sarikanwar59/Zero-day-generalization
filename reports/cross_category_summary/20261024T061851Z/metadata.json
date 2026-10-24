@@ -1,0 +1,26 @@
+{
+  "run_id": "20261024T061851Z",
+  "source_reports": {
+    "Generic": "reports/generic_target_fpr/20261024T061205Z/target_fpr_summary.csv",
+    "Exploits": "reports/exploits_target_fpr/20261024T061555Z/target_fpr_summary.csv"
+  },
+  "categories": [
+    "Generic",
+    "Exploits"
+  ],
+  "target_fprs": [
+    0.01,
+    0.02,
+    0.05,
+    0.1
+  ],
+  "purpose": "Descriptive comparison of held-out-category operating points and calibration sensitivity.",
+  "caveats": [
+    "The no_top5 feature sets differ between Generic and Exploits.",
+    "Calibration replicates overlap and are not independent.",
+    "The evaluation cohort is balanced by design.",
+    "Precision and F1 are not deployment-prevalence estimates.",
+    "Results are exploratory and specific to UNSW-NB15.",
+    "This analysis does not establish real-world zero-day detection."
+  ]
+}

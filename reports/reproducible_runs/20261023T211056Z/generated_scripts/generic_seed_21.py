@@ -1,0 +1,158 @@
+from pathlib import Path
+import json
+
+import numpy as np
+import pandas as pd
+import joblib
+
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import (
+    accuracy_score, precision_score, recall_score,
+    f1_score, roc_auc_score, confusion_matrix,
+    classification_report,
+)
+
+BASE = Path("data/raw/unsw_nb15")
+REPORTS = Path("reports")
+MODELS = Path("models")
+REPORTS.mkdir(exist_ok=True, parents=True)
+MODELS.mkdir(exist_ok=True, parents=True)
+
+TRAIN_FILE = BASE / "UNSW_NB15_training-set.csv"
+TEST_FILE = BASE / "UNSW_NB15_testing-set.csv"
+
+HELD_OUT = "Generic"
+TRAIN_SAMPLE = 20000
+TEST_PER_CLASS = 5000
+SEED = 21
+# Read the smaller training file and exclude the held-out attack family.
+train_df = pd.read_csv(TRAIN_FILE, low_memory=False)
+train_df["attack_cat"] = train_df["attack_cat"].fillna("Unknown").astype(str)
+train_df["label"] = pd.to_numeric(train_df["label"]).astype(int)
+
+train_pool = train_df[train_df["attack_cat"] != HELD_OUT].copy()
+if len(train_pool) < TRAIN_SAMPLE:
+    raise ValueError("Not enough training records after excluding held-out category.")
+
+train_df = train_pool.sample(
+    n=TRAIN_SAMPLE, random_state=SEED
+).reset_index(drop=True)
+
+# Collect normal and held-out attack records from the test file in chunks.
+normal_parts = []
+heldout_parts = []
+normal_count = 0
+heldout_count = 0
+
+for chunk in pd.read_csv(TEST_FILE, chunksize=10000, low_memory=False):
+    chunk["attack_cat"] = chunk["attack_cat"].fillna("Unknown").astype(str)
+    normal = chunk[chunk["attack_cat"] == "Normal"]
+    unseen = chunk[chunk["attack_cat"] == HELD_OUT]
+
+    if len(normal):
+        normal_parts.append(normal)
+        normal_count += len(normal)
+    if len(unseen):
+        heldout_parts.append(unseen)
+        heldout_count += len(unseen)
+
+normal_df = pd.concat(normal_parts, ignore_index=True)
+heldout_df = pd.concat(heldout_parts, ignore_index=True)
+
+if len(normal_df) < TEST_PER_CLASS or len(heldout_df) < TEST_PER_CLASS:
+    raise ValueError(
+        f"Insufficient evaluation records: normal={len(normal_df)}, "
+        f"{HELD_OUT}={len(heldout_df)}"
+    )
+
+normal_df = normal_df.sample(n=TEST_PER_CLASS, random_state=SEED)
+heldout_df = heldout_df.sample(n=TEST_PER_CLASS, random_state=SEED)
+
+test_df = pd.concat([normal_df, heldout_df], ignore_index=True)
+test_df = test_df.sample(frac=1, random_state=SEED).reset_index(drop=True)
+
+excluded = {"id", "attack_cat", "label"}
+features = [
+    c for c in train_df.columns
+    if c not in excluded and c in test_df.columns
+]
+
+X_train = train_df[features].copy()
+y_train = train_df["label"].astype(int)
+X_test = test_df[features].copy()
+y_test = test_df["label"].astype(int)
+
+# Confirm that the held-out category is absent from training.
+assert HELD_OUT not in set(train_df["attack_cat"])
+assert set(y_test.unique()) == {0, 1}
+
+categorical = X_train.select_dtypes(
+    include=["object", "category"]
+).columns.tolist()
+numeric = [c for c in features if c not in categorical]
+
+preprocess = ColumnTransformer([
+    ("numeric", SimpleImputer(strategy="median"), numeric),
+    ("categorical", Pipeline([
+        ("imputer", SimpleImputer(strategy="most_frequent")),
+        ("onehot", OneHotEncoder(
+            handle_unknown="ignore", sparse_output=True
+        )),
+    ]), categorical),
+])
+
+model = Pipeline([
+    ("preprocess", preprocess),
+    ("classifier", LogisticRegression(
+        max_iter=150,
+        class_weight="balanced",
+        solver="liblinear",
+        random_state=SEED,
+    )),
+])
+
+print("Held-out category:", HELD_OUT)
+print("Training sample:", len(X_train))
+print("Training attack categories:")
+print(sorted(train_df["attack_cat"].unique()))
+print("Test sample:", len(X_test))
+print("Test labels:", y_test.value_counts().to_dict())
+print("Training model...")
+
+model.fit(X_train, y_train)
+pred = model.predict(X_test)
+prob = model.predict_proba(X_test)[:, 1]
+
+metrics = {
+    "experiment": "unseen_attack_category",
+    "held_out_category": HELD_OUT,
+    "training_rows": int(len(X_train)),
+    "test_rows": int(len(X_test)),
+    "test_normal_rows": int((test_df["attack_cat"] == "Normal").sum()),
+    "test_held_out_attack_rows": int(
+        (test_df["attack_cat"] == HELD_OUT).sum()
+    ),
+    "held_out_category_in_training": False,
+    "accuracy": float(accuracy_score(y_test, pred)),
+    "precision": float(precision_score(y_test, pred, zero_division=0)),
+    "recall": float(recall_score(y_test, pred, zero_division=0)),
+    "f1_score": float(f1_score(y_test, pred, zero_division=0)),
+    "roc_auc": float(roc_auc_score(y_test, prob)),
+    "confusion_matrix": confusion_matrix(y_test, pred).tolist(),
+}
+
+joblib.dump(model, MODELS / '/home/ec2-user/zero-day-generalization/models/reproducible_runs/20261023T211056Z/generic_seed_21.joblib')
+with open(REPORTS / '/home/ec2-user/zero-day-generalization/reports/reproducible_runs/20261023T211056Z/generic_seed_21.json', "w") as f:
+    json.dump(metrics, f, indent=2)
+
+print("\n=== UNSEEN ATTACK CATEGORY RESULTS ===")
+print(json.dumps(metrics, indent=2))
+print("\n=== CLASSIFICATION REPORT ===")
+print(classification_report(y_test, pred, zero_division=0))
+print("\nSaved: models/unseen_generic_model.joblib")
+print("Saved: reports/unseen_generic_metrics.json")
+print("Note: withheld-category evaluation is not proof of real zero-day detection.")

@@ -1,0 +1,101 @@
+{
+  "experiment": "random_forest_calibrated_heldout_category",
+  "run_id": "20261024T051225Z",
+  "dataset_training_file": "data/raw/unsw_nb15/UNSW_NB15_training-set.csv",
+  "dataset_testing_file": "data/raw/unsw_nb15/UNSW_NB15_testing-set.csv",
+  "scikit_learn_version": "1.6.1",
+  "seed": 42,
+  "train_sample_rows": 20000,
+  "test_per_class": 5000,
+  "target_calibration_fpr": 0.05,
+  "results": [
+    {
+      "run_id": "20261024T051225Z",
+      "held_out_category": "Generic",
+      "model": "RandomForestClassifier",
+      "seed": 42,
+      "training_sample_rows": 20000,
+      "fit_rows": 14000,
+      "calibration_rows": 3000,
+      "internal_validation_rows": 3000,
+      "held_out_category_in_training_partitions": false,
+      "target_calibration_fpr": 0.05,
+      "calibration_normal_rows": 1248,
+      "selected_threshold": 0.6795336987872851,
+      "internal_validation_known_attack_recall": 0.910958904109589,
+      "internal_validation_fpr": 0.04807692307692308,
+      "test_normal_rows": 5000,
+      "test_held_out_attack_rows": 5000,
+      "test_accuracy": 0.6398,
+      "test_precision": 0.7539970930232558,
+      "test_held_out_attack_recall": 0.415,
+      "test_fpr": 0.1354,
+      "test_f1": 0.5353457172342622,
+      "test_roc_auc": 0.8254297999999999,
+      "test_average_precision": 0.7658794122620967,
+      "true_negatives": 4323,
+      "false_positives": 677,
+      "false_negatives": 2925,
+      "true_positives": 2075,
+      "confusion_matrix": [
+        [
+          4323,
+          677
+        ],
+        [
+          2925,
+          2075
+        ]
+      ],
+      "elapsed_seconds": 3.49,
+      "interpretation": "Exploratory withheld-category evaluation on UNSW-NB15. The testing data has been inspected in earlier experiments; this is not an untouched final test or proof of real-world zero-day detection."
+    },
+    {
+      "run_id": "20261024T051225Z",
+      "held_out_category": "Exploits",
+      "model": "RandomForestClassifier",
+      "seed": 42,
+      "training_sample_rows": 20000,
+      "fit_rows": 14000,
+      "calibration_rows": 3000,
+      "internal_validation_rows": 3000,
+      "held_out_category_in_training_partitions": false,
+      "target_calibration_fpr": 0.05,
+      "calibration_normal_rows": 1198,
+      "selected_threshold": 0.5845128732232094,
+      "internal_validation_known_attack_recall": 0.9267480577136515,
+      "internal_validation_fpr": 0.06260434056761269,
+      "test_normal_rows": 5000,
+      "test_held_out_attack_rows": 5000,
+      "test_accuracy": 0.9081,
+      "test_precision": 0.8641799036230591,
+      "test_held_out_attack_recall": 0.9684,
+      "test_fpr": 0.1522,
+      "test_f1": 0.9133264170517778,
+      "test_roc_auc": 0.9724505999999999,
+      "test_average_precision": 0.9713910454145711,
+      "true_negatives": 4239,
+      "false_positives": 761,
+      "false_negatives": 158,
+      "true_positives": 4842,
+      "confusion_matrix": [
+        [
+          4239,
+          761
+        ],
+        [
+          158,
+          4842
+        ]
+      ],
+      "elapsed_seconds": 3.03,
+      "interpretation": "Exploratory withheld-category evaluation on UNSW-NB15. The testing data has been inspected in earlier experiments; this is not an untouched final test or proof of real-world zero-day detection."
+    }
+  ],
+  "limitations": [
+    "Threshold is selected using normal calibration records only.",
+    "Held-out attack category is excluded from training-side partitions.",
+    "The testing dataset was inspected in earlier experiments.",
+    "Results are exploratory and do not prove real-world zero-day detection."
+  ]
+}

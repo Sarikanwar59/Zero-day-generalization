@@ -1,0 +1,26 @@
+{
+  "run_id": "20261024T053121Z",
+  "dataset": "data/raw/unsw_nb15/UNSW_NB15_training-set.csv",
+  "dataset_scope": "training CSV only",
+  "heldout_categories": [
+    "Generic",
+    "Exploits"
+  ],
+  "seeds": [
+    7,
+    21,
+    42
+  ],
+  "train_sample_size": 20000,
+  "normal_eval_size_per_seed": 5000,
+  "heldout_attack_eval_size_per_seed": 5000,
+  "target_calibration_fpr": 0.05,
+  "threshold_calibration": "normal calibration rows only",
+  "variants": [
+    "full",
+    "no_top5"
+  ],
+  "random_forest_random_state": 42,
+  "scikit_learn_version": "1.6.1",
+  "interpretation_limit": "Dataset-specific held-out-category evaluation; not proof of real-world zero-day detection. The excluded attack category is absent from model fitting and threshold calibration."
+}

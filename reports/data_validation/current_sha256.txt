@@ -1,0 +1,2 @@
+0ebd9eb06d53ae223fbe7948737985e851e00e9c20140508d653de4b1655fdd6  data/raw/unsw_nb15/UNSW_NB15_training-set.csv
+7ec02e7e44d72bd265716b33fda0c7f2188b658e3a4ae1aa2c4b306134cd818c  data/raw/unsw_nb15/UNSW_NB15_testing-set.csv

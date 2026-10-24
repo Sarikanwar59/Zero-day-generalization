@@ -1,0 +1,18 @@
+{
+  "generated_utc": "2026-10-24T08:27:21.030954+00:00",
+  "source_files": [
+    "reports/cross_category_summary/20261024T062633Z/cross_category_operating_points.csv",
+    "reports/cross_category_summary/20261024T062633Z/cross_category_all_metrics.csv",
+    "reports/calibration_uncertainty/20261024T062915Z/calibration_uncertainty.csv"
+  ],
+  "output_directory": "reports/final_research_report/20261024T082720Z",
+  "operating_point_rows": 8,
+  "all_metrics_rows": 16,
+  "uncertainty_rows": 32,
+  "limitations": [
+    "Exploratory UNSW-NB15 experiments only",
+    "Calibration samples may overlap",
+    "Evaluation cohorts fixed within source experiments",
+    "No independent real-world zero-day validation"
+  ]
+}

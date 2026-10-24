@@ -1,0 +1,52 @@
+{
+  "run_id": "20261024T061205Z",
+  "dataset_scope": "UNSW-NB15 training CSV only",
+  "heldout_category": "Generic",
+  "target_fprs": [
+    0.01,
+    0.02,
+    0.05,
+    0.1
+  ],
+  "calibration_size": 3000,
+  "calibration_seeds": [
+    1101,
+    1102,
+    1103,
+    1104,
+    1105,
+    1106,
+    1107,
+    1108,
+    1109,
+    1110
+  ],
+  "training_pool_seed": 20261026,
+  "fit_sample_seed": 20261027,
+  "normal_eval_seed": 20261024,
+  "generic_eval_seed": 20261025,
+  "fit_sample_size": 20000,
+  "normal_eval_size": 5000,
+  "generic_eval_size": 5000,
+  "calibration_reservoir_size": 43171,
+  "variants": [
+    "full",
+    "no_top5"
+  ],
+  "no_top5_features_removed": [
+    "sttl",
+    "proto",
+    "dttl",
+    "ct_dst_src_ltm",
+    "dbytes"
+  ],
+  "threshold_rule": "quantile(calibration_normal_scores, 1 - target_fpr)",
+  "notes": [
+    "Model fit rows and evaluation rows are fixed within this run.",
+    "Each calibration replicate is reused across all target FPRs.",
+    "Calibration samples can overlap across replicates.",
+    "Calibration FPR may differ slightly from target due to quantile interpolation and tied scores.",
+    "Evaluation cohort is balanced and is not a real-world prevalence estimate.",
+    "Exploratory held-out-category evaluation is not proof of real-world zero-day detection."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "experiment": "unseen_attack_category",
+  "held_out_category": "Generic",
+  "training_rows": 20000,
+  "test_rows": 10000,
+  "test_normal_rows": 5000,
+  "test_held_out_attack_rows": 5000,
+  "held_out_category_in_training": false,
+  "accuracy": 0.8357,
+  "precision": 0.7542026351658337,
+  "recall": 0.996,
+  "f1_score": 0.8583986899939671,
+  "roc_auc": 0.9704092400000001,
+  "confusion_matrix": [
+    [
+      3377,
+      1623
+    ],
+    [
+      20,
+      4980
+    ]
+  ]
+}

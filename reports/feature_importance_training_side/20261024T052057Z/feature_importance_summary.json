@@ -1,0 +1,239 @@
+{
+  "experiment": "training_side_feature_importance",
+  "run_id": "20261024T052057Z",
+  "scikit_learn_version": "1.6.1",
+  "summaries": [
+    {
+      "run_id": "20261024T052057Z",
+      "held_out_category": "Generic",
+      "dataset": "data/raw/unsw_nb15/UNSW_NB15_training-set.csv",
+      "seed": 42,
+      "sample_rows": 20000,
+      "fit_rows": 14000,
+      "calibration_rows": 3000,
+      "validation_rows": 3000,
+      "held_out_category_excluded_from_all_partitions": true,
+      "validation_roc_auc": 0.9882195073761854,
+      "permutation_repeats": 3,
+      "permutation_scoring": "roc_auc",
+      "top_10_permutation_features": [
+        {
+          "feature": "sttl",
+          "permutation_importance_mean": 0.006948408168442333,
+          "permutation_importance_std": 0.0007189846720543717
+        },
+        {
+          "feature": "proto",
+          "permutation_importance_mean": 0.0035659795398665186,
+          "permutation_importance_std": 0.0004828338547877946
+        },
+        {
+          "feature": "dttl",
+          "permutation_importance_mean": 0.0035208540666587704,
+          "permutation_importance_std": 0.0004913524703276687
+        },
+        {
+          "feature": "ct_dst_src_ltm",
+          "permutation_importance_mean": 0.00190456938102479,
+          "permutation_importance_std": 0.000358150796058119
+        },
+        {
+          "feature": "dbytes",
+          "permutation_importance_mean": 0.0015664332338133358,
+          "permutation_importance_std": 0.0002625603254729234
+        },
+        {
+          "feature": "swin",
+          "permutation_importance_mean": 0.0014397465168011214,
+          "permutation_importance_std": 0.00017229396038842144
+        },
+        {
+          "feature": "dmean",
+          "permutation_importance_mean": 0.00136580781914671,
+          "permutation_importance_std": 0.00011614859542142614
+        },
+        {
+          "feature": "sbytes",
+          "permutation_importance_mean": 0.001237291691058721,
+          "permutation_importance_std": 0.0001627500536989803
+        },
+        {
+          "feature": "smean",
+          "permutation_importance_mean": 0.0010901765503647705,
+          "permutation_importance_std": 0.00023485597839561608
+        },
+        {
+          "feature": "service",
+          "permutation_importance_mean": 0.0009974863891815493,
+          "permutation_importance_std": 9.633185520587385e-05
+        }
+      ],
+      "top_10_impurity_features": [
+        {
+          "feature": "sttl",
+          "impurity_importance": 0.15210250491023303
+        },
+        {
+          "feature": "ct_state_ttl",
+          "impurity_importance": 0.0797064070100832
+        },
+        {
+          "feature": "dload",
+          "impurity_importance": 0.0680204229567635
+        },
+        {
+          "feature": "dttl",
+          "impurity_importance": 0.06393615401709199
+        },
+        {
+          "feature": "ackdat",
+          "impurity_importance": 0.03692616081800476
+        },
+        {
+          "feature": "state",
+          "impurity_importance": 0.03611401865293545
+        },
+        {
+          "feature": "dinpkt",
+          "impurity_importance": 0.03306310656198463
+        },
+        {
+          "feature": "synack",
+          "impurity_importance": 0.031825830430955195
+        },
+        {
+          "feature": "dmean",
+          "impurity_importance": 0.03154847848268897
+        },
+        {
+          "feature": "ct_srv_dst",
+          "impurity_importance": 0.02968924487402789
+        }
+      ],
+      "elapsed_seconds": 9.6,
+      "limitations": [
+        "Feature importance describes this fitted model and validation sample.",
+        "Correlated features can share or mask permutation importance.",
+        "Impurity importance can favor features with more possible split points.",
+        "Importance does not establish causality or real-world zero-day performance.",
+        "The validation partition is used for importance analysis, not as an untouched final evaluation."
+      ]
+    },
+    {
+      "run_id": "20261024T052057Z",
+      "held_out_category": "Exploits",
+      "dataset": "data/raw/unsw_nb15/UNSW_NB15_training-set.csv",
+      "seed": 42,
+      "sample_rows": 20000,
+      "fit_rows": 14000,
+      "calibration_rows": 3000,
+      "validation_rows": 3000,
+      "held_out_category_excluded_from_all_partitions": true,
+      "validation_roc_auc": 0.9875412035227042,
+      "permutation_repeats": 3,
+      "permutation_scoring": "roc_auc",
+      "top_10_permutation_features": [
+        {
+          "feature": "service",
+          "permutation_importance_mean": 0.004481355965701798,
+          "permutation_importance_std": 0.000128911259269582
+        },
+        {
+          "feature": "sttl",
+          "permutation_importance_mean": 0.004366091098927272,
+          "permutation_importance_std": 0.0004969320788868332
+        },
+        {
+          "feature": "sbytes",
+          "permutation_importance_mean": 0.002683903435062788,
+          "permutation_importance_std": 2.8408590365594328e-05
+        },
+        {
+          "feature": "smean",
+          "permutation_importance_mean": 0.0019956339861044725,
+          "permutation_importance_std": 0.00013321700795943255
+        },
+        {
+          "feature": "sload",
+          "permutation_importance_mean": 0.001503307090310176,
+          "permutation_importance_std": 0.00017432347975299887
+        },
+        {
+          "feature": "ct_dst_sport_ltm",
+          "permutation_importance_mean": 0.0014762086521065883,
+          "permutation_importance_std": 0.00021085115915141792
+        },
+        {
+          "feature": "ct_dst_src_ltm",
+          "permutation_importance_mean": 0.0014495734350689442,
+          "permutation_importance_std": 6.073950432100535e-05
+        },
+        {
+          "feature": "ct_srv_dst",
+          "permutation_importance_mean": 0.0013946045233854305,
+          "permutation_importance_std": 0.00021271069646071816
+        },
+        {
+          "feature": "djit",
+          "permutation_importance_mean": 0.0013561571666181142,
+          "permutation_importance_std": 3.931577801390327e-05
+        },
+        {
+          "feature": "dttl",
+          "permutation_importance_mean": 0.0012565646159555799,
+          "permutation_importance_std": 9.030245517361109e-05
+        }
+      ],
+      "top_10_impurity_features": [
+        {
+          "feature": "sttl",
+          "impurity_importance": 0.14706970034426542
+        },
+        {
+          "feature": "sload",
+          "impurity_importance": 0.07984604894865406
+        },
+        {
+          "feature": "ct_state_ttl",
+          "impurity_importance": 0.06566686843649817
+        },
+        {
+          "feature": "dload",
+          "impurity_importance": 0.06300886717819601
+        },
+        {
+          "feature": "rate",
+          "impurity_importance": 0.060958091651265985
+        },
+        {
+          "feature": "dbytes",
+          "impurity_importance": 0.03786534557990259
+        },
+        {
+          "feature": "sbytes",
+          "impurity_importance": 0.032130566137817944
+        },
+        {
+          "feature": "sinpkt",
+          "impurity_importance": 0.03140097009530752
+        },
+        {
+          "feature": "dpkts",
+          "impurity_importance": 0.031333115949162
+        },
+        {
+          "feature": "dmean",
+          "impurity_importance": 0.029435827390288997
+        }
+      ],
+      "elapsed_seconds": 8.76,
+      "limitations": [
+        "Feature importance describes this fitted model and validation sample.",
+        "Correlated features can share or mask permutation importance.",
+        "Impurity importance can favor features with more possible split points.",
+        "Importance does not establish causality or real-world zero-day performance.",
+        "The validation partition is used for importance analysis, not as an untouched final evaluation."
+      ]
+    }
+  ]
+}

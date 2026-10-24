@@ -1,0 +1,19 @@
+{
+  "evaluation": "synthetic_distribution_shift",
+  "records": 4000,
+  "accuracy": 0.4565,
+  "precision": 0.4684095860566449,
+  "recall": 0.645,
+  "f1_score": 0.5427008834665544,
+  "roc_auc": 0.521754625,
+  "confusion_matrix": [
+    [
+      536,
+      1464
+    ],
+    [
+      710,
+      1290
+    ]
+  ]
+}

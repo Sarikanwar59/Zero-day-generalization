@@ -1,0 +1,48 @@
+Held-out category: Generic
+Training sample: 20000
+Training attack categories:
+['Analysis', 'Backdoor', 'DoS', 'Exploits', 'Fuzzers', 'Normal', 'Reconnaissance', 'Shellcode', 'Worms']
+Test sample: 10000
+Test labels: {1: 5000, 0: 5000}
+Training model...
+
+=== UNSEEN ATTACK CATEGORY RESULTS ===
+{
+  "experiment": "unseen_attack_category",
+  "held_out_category": "Generic",
+  "training_rows": 20000,
+  "test_rows": 10000,
+  "test_normal_rows": 5000,
+  "test_held_out_attack_rows": 5000,
+  "held_out_category_in_training": false,
+  "accuracy": 0.7029,
+  "precision": 0.6286620164870006,
+  "recall": 0.9914,
+  "f1_score": 0.7694218083042297,
+  "roc_auc": 0.9293968800000001,
+  "confusion_matrix": [
+    [
+      2072,
+      2928
+    ],
+    [
+      43,
+      4957
+    ]
+  ]
+}
+
+=== CLASSIFICATION REPORT ===
+              precision    recall  f1-score   support
+
+           0       0.98      0.41      0.58      5000
+           1       0.63      0.99      0.77      5000
+
+    accuracy                           0.70     10000
+   macro avg       0.80      0.70      0.68     10000
+weighted avg       0.80      0.70      0.68     10000
+
+
+Saved: models/unseen_generic_model.joblib
+Saved: reports/unseen_generic_metrics.json
+Note: withheld-category evaluation is not proof of real zero-day detection.

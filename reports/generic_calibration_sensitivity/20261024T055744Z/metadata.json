@@ -1,0 +1,29 @@
+{
+  "run_id": "20261024T055744Z",
+  "dataset": "data/raw/unsw_nb15/UNSW_NB15_training-set.csv",
+  "dataset_scope": "UNSW-NB15 training CSV only",
+  "heldout_category": "Generic",
+  "fit_pool_seed": 20261026,
+  "fit_sample_seed": 20261027,
+  "fixed_normal_eval_seed": 20261024,
+  "fixed_generic_eval_seed": 20261025,
+  "calibration_seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "calibration_sample_size": 3000,
+  "fit_rows": 20000,
+  "calibration_reservoir_rows": 43210,
+  "normal_eval_rows": 5000,
+  "generic_eval_rows": 5000,
+  "threshold_target_fpr": 0.05,
+  "variants": [
+    "full",
+    "no_top5"
+  ],
+  "design": "One fixed fitted model per feature variant and one fixed evaluation cohort per variant. Only the normal calibration sample changes.",
+  "interpretation_limit": "Exploratory dataset-specific calibration sensitivity experiment. Evaluation precision and F1 use a balanced 50:50 normal/attack cohort and are not deployment prevalence estimates. This is not proof of real-world zero-day detection."
+}

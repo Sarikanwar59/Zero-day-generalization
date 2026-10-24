@@ -1,0 +1,23 @@
+{
+  "run_id": "20261024T055247Z",
+  "dataset": "data/raw/unsw_nb15/UNSW_NB15_training-set.csv",
+  "dataset_scope": "training CSV only",
+  "heldout_category": "Generic",
+  "seeds": [
+    7,
+    21,
+    42
+  ],
+  "experiment": "vary_training_sample_fixed_fit_calibration_split",
+  "fixed_split_seed": 42,
+  "variants": [
+    "full",
+    "no_top5"
+  ],
+  "normal_eval_size": 5000,
+  "heldout_attack_eval_size": 5000,
+  "threshold_target_fpr": 0.05,
+  "threshold_source": "normal calibration rows only",
+  "feature_comparison": "descriptive numeric feature differences between false negatives and true positives",
+  "interpretation_limit": "Dataset-specific exploratory diagnostics; feature differences are associations, not causal explanations or proof of real-world zero-day detection."
+}

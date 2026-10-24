@@ -1,0 +1,152 @@
+{
+  "experiment": "validation_model_comparison",
+  "seed": 42,
+  "sample_size": 20000,
+  "target_calibration_fpr": 0.05,
+  "scikit_learn_version": "1.6.1",
+  "dataset_file": "data/raw/unsw_nb15/UNSW_NB15_training-set.csv",
+  "results": [
+    {
+      "held_out_category": "Generic",
+      "model": "LogisticRegression",
+      "seed": 42,
+      "target_calibration_fpr": 0.05,
+      "selected_threshold": 0.665970603711504,
+      "fit_rows": 14000,
+      "calibration_rows": 3000,
+      "validation_rows": 3000,
+      "held_out_category_in_fit": false,
+      "held_out_category_in_calibration": false,
+      "held_out_category_in_validation": false,
+      "validation_accuracy": 0.6646666666666666,
+      "validation_precision": 0.9357476635514018,
+      "validation_recall_known_attacks": 0.4571917808219178,
+      "validation_f1": 0.6142638036809815,
+      "validation_false_positive_rate": 0.044070512820512824,
+      "validation_normal_rows": 1248,
+      "validation_false_positives": 55,
+      "validation_roc_auc": 0.86154010800843,
+      "validation_average_precision": 0.8720331451649672,
+      "validation_confusion_matrix": [
+        [
+          1193,
+          55
+        ],
+        [
+          951,
+          801
+        ]
+      ],
+      "elapsed_seconds": 0.3,
+      "interpretation": "Validation uses known categories only. It does not measure held-out-category recall."
+    },
+    {
+      "held_out_category": "Generic",
+      "model": "RandomForest",
+      "seed": 42,
+      "target_calibration_fpr": 0.05,
+      "selected_threshold": 0.6795336987872851,
+      "fit_rows": 14000,
+      "calibration_rows": 3000,
+      "validation_rows": 3000,
+      "held_out_category_in_fit": false,
+      "held_out_category_in_calibration": false,
+      "held_out_category_in_validation": false,
+      "validation_accuracy": 0.928,
+      "validation_precision": 0.9637681159420289,
+      "validation_recall_known_attacks": 0.910958904109589,
+      "validation_f1": 0.9366197183098591,
+      "validation_false_positive_rate": 0.04807692307692308,
+      "validation_normal_rows": 1248,
+      "validation_false_positives": 60,
+      "validation_roc_auc": 0.9882195073761854,
+      "validation_average_precision": 0.9915764414296763,
+      "validation_confusion_matrix": [
+        [
+          1188,
+          60
+        ],
+        [
+          156,
+          1596
+        ]
+      ],
+      "elapsed_seconds": 3.21,
+      "interpretation": "Validation uses known categories only. It does not measure held-out-category recall."
+    },
+    {
+      "held_out_category": "Exploits",
+      "model": "LogisticRegression",
+      "seed": 42,
+      "target_calibration_fpr": 0.05,
+      "selected_threshold": 0.7130163927119751,
+      "fit_rows": 14000,
+      "calibration_rows": 3000,
+      "validation_rows": 3000,
+      "held_out_category_in_fit": false,
+      "held_out_category_in_calibration": false,
+      "held_out_category_in_validation": false,
+      "validation_accuracy": 0.657,
+      "validation_precision": 0.9447640966628308,
+      "validation_recall_known_attacks": 0.4556048834628191,
+      "validation_f1": 0.6147510295769375,
+      "validation_false_positive_rate": 0.04006677796327212,
+      "validation_normal_rows": 1198,
+      "validation_false_positives": 48,
+      "validation_roc_auc": 0.9178185432991353,
+      "validation_average_precision": 0.9221016634311904,
+      "validation_confusion_matrix": [
+        [
+          1150,
+          48
+        ],
+        [
+          981,
+          821
+        ]
+      ],
+      "elapsed_seconds": 0.27,
+      "interpretation": "Validation uses known categories only. It does not measure held-out-category recall."
+    },
+    {
+      "held_out_category": "Exploits",
+      "model": "RandomForest",
+      "seed": 42,
+      "target_calibration_fpr": 0.05,
+      "selected_threshold": 0.5845128732232094,
+      "fit_rows": 14000,
+      "calibration_rows": 3000,
+      "validation_rows": 3000,
+      "held_out_category_in_fit": false,
+      "held_out_category_in_calibration": false,
+      "held_out_category_in_validation": false,
+      "validation_accuracy": 0.931,
+      "validation_precision": 0.9570200573065902,
+      "validation_recall_known_attacks": 0.9267480577136515,
+      "validation_f1": 0.9416408232308994,
+      "validation_false_positive_rate": 0.06260434056761269,
+      "validation_normal_rows": 1198,
+      "validation_false_positives": 75,
+      "validation_roc_auc": 0.9875412035227042,
+      "validation_average_precision": 0.9916637558320126,
+      "validation_confusion_matrix": [
+        [
+          1123,
+          75
+        ],
+        [
+          132,
+          1670
+        ]
+      ],
+      "elapsed_seconds": 2.71,
+      "interpretation": "Validation uses known categories only. It does not measure held-out-category recall."
+    }
+  ],
+  "limitations": [
+    "The held-out attack category is excluded from all partitions.",
+    "Threshold calibration uses normal calibration records only.",
+    "Validation measures known attack categories, not held-out attacks.",
+    "This experiment does not establish real-world zero-day detection."
+  ]
+}

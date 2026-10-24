@@ -1,0 +1,71 @@
+{
+  "experiment": "unsw_nb15_sampled_binary_baseline",
+  "training_file": "UNSW_NB15_testing-set.csv",
+  "testing_file": "UNSW_NB15_training-set.csv",
+  "training_rows": 20000,
+  "testing_rows": 9301,
+  "features_used": [
+    "dur",
+    "proto",
+    "service",
+    "state",
+    "spkts",
+    "dpkts",
+    "sbytes",
+    "dbytes",
+    "rate",
+    "sttl",
+    "dttl",
+    "sload",
+    "dload",
+    "sloss",
+    "dloss",
+    "sinpkt",
+    "dinpkt",
+    "sjit",
+    "djit",
+    "swin",
+    "stcpb",
+    "dtcpb",
+    "dwin",
+    "tcprtt",
+    "synack",
+    "ackdat",
+    "smean",
+    "dmean",
+    "trans_depth",
+    "response_body_len",
+    "ct_srv_src",
+    "ct_state_ttl",
+    "ct_dst_ltm",
+    "ct_src_dport_ltm",
+    "ct_dst_sport_ltm",
+    "ct_dst_src_ltm",
+    "is_ftp_login",
+    "ct_ftp_cmd",
+    "ct_flw_http_mthd",
+    "ct_src_ltm",
+    "ct_srv_dst",
+    "is_sm_ips_ports"
+  ],
+  "excluded_columns": [
+    "attack_cat",
+    "id",
+    "label"
+  ],
+  "accuracy": 0.7106762713686701,
+  "precision": 0.6636599699330327,
+  "recall": 0.9547778214707039,
+  "f1_score": 0.7830363621704426,
+  "roc_auc": 0.8191319972627393,
+  "confusion_matrix": [
+    [
+      1754,
+      2461
+    ],
+    [
+      230,
+      4856
+    ]
+  ]
+}
