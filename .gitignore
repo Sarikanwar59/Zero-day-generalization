@@ -5,3 +5,29 @@ __pycache__/
 *.pem
 *.key
 .DS_Store
+
+# Additional virtual environment
+venv/
+
+# Local datasets and generated model artifacts
+# Review before tracking these directories
+
+# Python environments
+.venv/
+venv/
+source/
+
+# Local datasets and generated model artifacts
+data/
+models/
+
+# Historical working archives
+archive/
+archive_pre_split_20261024/
+
+# Python and experiment outputs
+__pycache__/
+*.py[cod]
+.env
+*.pem
+*.key
