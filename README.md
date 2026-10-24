@@ -58,6 +58,42 @@ The consolidated research report is stored under:
 The report includes metrics, operating-point comparisons, calibration
 uncertainty summaries, and figures.
 
+## Experimental Results
+
+The following table compares recall for held-out attack categories under
+different target false-positive-rate (FPR) thresholds. Results compare the
+full-feature model with the `no_top5` feature-ablation model.
+
+### Held-out Generic category
+
+| Target FPR | Full-feature recall (%) | no_top5 recall (%) |
+|---:|---:|---:|
+| 1% | 8.784 | 20.516 |
+| 2% | 22.566 | 44.632 |
+| 5% | 81.862 | 93.274 |
+| 10% | 100.000 | 99.996 |
+
+### Held-out Exploits category
+
+| Target FPR | Full-feature recall (%) | no_top5 recall (%) |
+|---:|---:|---:|
+| 1% | 74.638 | 77.756 |
+| 2% | 84.232 | 88.798 |
+| 5% | 95.946 | 95.538 |
+| 10% | 99.050 | 98.742 |
+
+### Interpretation
+
+- For the held-out `Generic` category, `no_top5` achieved higher recall at
+  target FPR levels of 1%, 2%, and 5%.
+- For the held-out `Exploits` category, `no_top5` achieved higher recall at
+  target FPR levels of 1% and 2%, but slightly lower recall at 5% and 10%.
+- Target FPR is the calibration threshold; the observed evaluation FPR may
+  differ from that target.
+- These are exploratory experiments using UNSW-NB15. They do not establish
+  real-world zero-day detection capability. Independent datasets and
+  temporal or cross-network validation are needed.
+
 ## Limitations
 
 These are exploratory experiments on UNSW-NB15 using held-out attack
